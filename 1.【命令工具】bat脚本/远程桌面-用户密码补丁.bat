@@ -1,44 +1,47 @@
 @ECHO OFF
 CD /D %~DP0
-TITLE auther:lrwy
-mode con cols=62 lines=33
-@echo.
+TITLE 设置密码永不过期
+mode con cols=62 lines=20
 
 >NUL 2>&1 REG.exe query "HKU\S-1-5-19" || (
-    REM 使用 REG 命令查询注册表项
     ECHO SET UAC = CreateObject^("Shell.Application"^) > "%TEMP%\Getadmin.vbs"
-    REM 创建一个 VBS 脚本文件来获取管理员权限
     ECHO UAC.ShellExecute "%~f0", "%1", "", "runas", 1 >> "%TEMP%\Getadmin.vbs"
-    REM 在 VBS 脚本中执行批处理文件以获取管理员权限
     "%TEMP%\Getadmin.vbs"
-    REM 运行 VBS 脚本以获取管理员权限
     DEL /f /q "%TEMP%\Getadmin.vbs" 2>NUL
-    REM 删除临时的 VBS 脚本文件
     Exit /b
-    REM 退出当前批处理文件
 )
 
 @echo off
 setlocal
 
-REM 关闭命令运行完成的回显
-echo off
-
 set /p username=请输入用户名: 
 
-REM 输入用户密码
-set /p password=请输入用户密码: 
+echo.
+echo 正在检查用户 [%username%] 的当前状态...
 
-REM 将用户的密码设置为永不过期
-net user %username% %password% /expires:never
+REM 先查看当前状态
+net user %username% 2>nul | findstr /i "密码到期"
+if %errorlevel% neq 0 (
+    echo [错误] 用户 %username% 不存在或无法查询！
+    goto end
+)
 
-REM 检查密码是否成功设置为永不过期
+echo.
+echo 正在设置密码永不过期...
+
+REM 使用 PowerShell 设置密码永不过期（替代已弃用的 wmic）
+powershell -NoProfile -Command "Set-LocalUser -Name '%username%' -PasswordNeverExpires $true" 2>nul
+
 if %errorlevel% equ 0 (
-    echo 用户 %username% 的密码已设置为永不过期
+    echo [成功] 用户 %username% 的密码已设置为永不过期
+    echo.
+    echo 验证结果：
+    net user %username% | findstr /i "密码到期"
 ) else (
-    echo 密码设置失败，请重试
+    echo [失败] 设置失败，请检查用户名是否正确或PowerShell是否可用
 )
 
 :end
+echo.
 pause
 endlocal
