@@ -1,0 +1,2 @@
+目前同步到了25年6月1号的，如果您下载的时候有最新的最好替换一下
+https://raw.githubusercontent.com/sebaxakerhtc/rdpwrap.ini/master/rdpwrap.ini
