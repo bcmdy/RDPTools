@@ -1,0 +1,6 @@
+id,name,folder,clues
+1remote,1Remote,"3.【远程工具】/0.【推荐】1Remote","Product=1Remote; Company=Shawn Veck; Copyright=1remote.github.io; Version=1.3.0.10519"
+simpleremote,SimpleRemote,"3.【远程工具】/1.【备选】SimpleRemote","Product=SimpleRemote; Version=1.3.1.0; embedded homepage http://www.91fk.net; embedded email simoleremote@91fk.net; supports RDP SSH Telnet"
+rdpwrapper,rdpWrapper,"2.【限制解除】RDP限制破解/0.【推荐无配置通杀工具】rdpWrapper","Product=RDPWrapper; FileDescription=RDP Wrapper; Company=SergiyE; Copyright=Sergiy Egoshyn 2025; Version=2.15.9659.21489"
+rdpw_mod,RDP Wrapper Library mod,"2.【限制解除】RDP限制破解/1.【在线自动更新配置】RDP Wrapper Library mod v1.8.9.9","Product=RDPW_Installer; Company=sebaxakerhtc; Version=1.8.9.9; related rdpwrap.ini URL raw.githubusercontent.com/sebaxakerhtc/rdpwrap.ini"
+offset_finder,RDPWrapOffsetFinder,"2.【限制解除】RDP限制破解/2.【本地破解提取配置工具】RDPWrapOffsetFinder","Product=RDPWrapOffsetFinder; description=rdpwrap offset finder; version=v1.0; GitHub search found llccd/RDPWrapOffsetFinder"

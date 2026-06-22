@@ -1,0 +1,2 @@
+"1.本地远程多用户后台挂机指南(来自bettergi官网).pdf"教程中的RDP Wrapper CnC位于"\2.【限制解除】RDP限制破解\1.【在线自动更新配置】RDP Wrapper Library mod v1.8.9.9"
+但更推荐使用"0.【推荐无配置通杀工具】rdpWrapper"工具，使用更简单且通杀
