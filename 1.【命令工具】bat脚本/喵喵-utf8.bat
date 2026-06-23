@@ -1,35 +1,36 @@
-@ECHO OFF                    
-CD /D %~DP0                  
+@ECHO OFF
+CHCP 65001 >NUL
+CD /D "%~DP0"
 TITLE  auther:lrwy                      
 mode con cols=62 lines=33    
 @ echo.                      
 >NUL 2>&1 REG.exe query "HKU\S-1-5-19" || (    
-REM 使用 REG 命令查询注册表项
-    ECHO SET UAC = CreateObject^("Shell.Application"^) > "%TEMP%\Getadmin.vbs"    
-REM 创建一个 VBS 脚本文件来获取管理员权限
-    ECHO UAC.ShellExecute "%~f0", "%1", "", "runas", 1 >> "%TEMP%\Getadmin.vbs"    
-REM 在 VBS 脚本中执行批处理文件以获取管理员权限
-    "%TEMP%\Getadmin.vbs"    
-REM 运行 VBS 脚本以获取管理员权限
-    DEL /f /q "%TEMP%\Getadmin.vbs" 2>NUL    
-REM 删除临时的 VBS 脚本文件
-    Exit /b    
-REM 退出当前批处理文件
+REM UTF-8 脚本写出的 VBS 会被 Windows Script Host 按 ANSI 读取，中文路径会乱码。
+REM 改用 PowerShell 从环境变量读取当前脚本路径，再请求管理员权限。
+    SET "__RDPTOOLS_SELF=%~f0"
+    PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$bat=$env:__RDPTOOLS_SELF; $cmd='/d /c ' + [char]34 + $bat + [char]34; Start-Process -FilePath $env:ComSpec -ArgumentList $cmd -Verb RunAs"
+    Exit /b
 )
 
 
-@ echo.
-@ echo.功能选择：
 :Menu
-echo.&echo  1. 新增远程桌面用户并添加到对应组
-echo.&echo  2. 远程桌面端口开关
-echo.&echo  3. Windows家庭版添加组策略功能
-echo.&echo  4. 打开组策略编辑器
-echo.&echo  5. sfc系统修复命令
-echo.&echo  6. 显隐用户
-echo.&echo  7. 删除用户和用户文件(危险操作)
-
-echo.&echo.
+echo(
+echo 功能选择：
+echo(
+echo   1. 新增远程桌面用户并添加到对应组
+echo(
+echo   2. 远程桌面端口开关
+echo(
+echo   3. Windows家庭版添加组策略功能
+echo(
+echo   4. 打开组策略编辑器
+echo(
+echo   5. sfc系统修复命令
+echo(
+echo   6. 显隐用户
+echo(
+echo   7. 删除用户和用户文件(危险操作)
+echo(
 set /p a=输入数字后回车：
 IF NOT "%a%"=="" SET a=%a:~0,1%
 if "%a%"=="1" set a=<nul&&CLS && Goto R1
@@ -39,7 +40,8 @@ if "%a%"=="4" set a=<nul&&CLS && Goto R4
 if "%a%"=="5" set a=<nul&&CLS && Goto R5
 if "%a%"=="6" set a=<nul&&CLS && Goto R6
 if "%a%"=="7" set a=<nul&&CLS && Goto R7
-echo.&echo 输入无效，请重新输入！ 
+echo(
+echo 输入无效，请重新输入！
 PAUSE >NUL && CLS && GOTO Menu
 
 :R1
@@ -108,7 +110,8 @@ IF /I "%hideUser%"=="y" (
 pause
 endlocal
 
-echo.&echo 返回主菜单
+echo(
+echo 返回主菜单
 GOTO MENU
 
 

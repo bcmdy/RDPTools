@@ -1,13 +1,12 @@
 @ECHO OFF
-CD /D %~DP0
+CHCP 65001 >NUL
+CD /D "%~DP0"
 TITLE 设置密码永不过期
 mode con cols=62 lines=20
 
 >NUL 2>&1 REG.exe query "HKU\S-1-5-19" || (
-    ECHO SET UAC = CreateObject^("Shell.Application"^) > "%TEMP%\Getadmin.vbs"
-    ECHO UAC.ShellExecute "%~f0", "%1", "", "runas", 1 >> "%TEMP%\Getadmin.vbs"
-    "%TEMP%\Getadmin.vbs"
-    DEL /f /q "%TEMP%\Getadmin.vbs" 2>NUL
+    SET "__RDPTOOLS_SELF=%~f0"
+    PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$bat=$env:__RDPTOOLS_SELF; $cmd='/d /c ' + [char]34 + $bat + [char]34; Start-Process -FilePath $env:ComSpec -ArgumentList $cmd -Verb RunAs"
     Exit /b
 )
 
