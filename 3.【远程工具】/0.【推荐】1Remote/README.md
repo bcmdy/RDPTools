@@ -8,7 +8,7 @@
 - 上游 README：https://raw.githubusercontent.com/1Remote/1Remote/main/readme.md
 - 中文介绍：https://github.com/1Remote/1Remote/wiki/Intro%E2%80%90ZhCn
 - 文档站点：https://1remote.github.io
-- 本地版本：`1.3.0.10519+6c7aca3af71dc9657eb612622b33f03d69bad6b5`
+- 本地版本：`1.3.0.10622+5b9d8441104484aaa573dbe3c043cc3d01b18334`
 
 ## 工具简介
 
