@@ -6,7 +6,7 @@
 
 - GitHub 仓库：https://github.com/sergiye/rdpWrapper
 - 上游 README：https://raw.githubusercontent.com/sergiye/rdpWrapper/master/README.md
-- 本地文件版本：`2.15.9659.21489`
+- 本地文件版本：`2.16.9787.37221`
 - 作者信息：SergiyE / Sergiy Egoshyn
 
 ## 工具简介
