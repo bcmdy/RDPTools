@@ -7,6 +7,7 @@
 - GitHub 仓库：https://github.com/llccd/RDPWrapOffsetFinder
 - 上游 README：https://raw.githubusercontent.com/llccd/RDPWrapOffsetFinder/master/README.md
 - 本地版本：`v1.0`
+- 上游状态：`v1.0` 为最新 release（2026-05-26），其后 master 分支有未发版的修复（适配 10.0.28000.2307、实验性 ARM64 支持），需要时须自行编译
 
 ## 工具简介
 

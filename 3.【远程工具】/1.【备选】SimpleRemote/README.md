@@ -8,6 +8,7 @@
 - 上游 README：https://raw.githubusercontent.com/beckzhu/SimpleRemote/master/README.md
 - 上游主页：http://www.91fk.net/
 - 本地版本：`1.3.1.0`
+- 上游公开发布：最新 release 为 `1.2`（2019-06-07），本地 `1.3.1.0` 属于发布渠道之外的构建，无法从上游 release 直接核实
 
 ## 工具状态
 

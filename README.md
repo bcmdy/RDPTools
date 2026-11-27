@@ -13,7 +13,7 @@ RDPTools 是一个面向 Windows 远程桌面使用场景的工具与资料集�
 | `2.【限制解除】RDP限制破解` | RDP Wrapper、SuperRDP、偏移提取工具等 | 解除 Windows 远程桌面主机和多会话限制 |
 | `3.【远程工具】` | 1Remote、SimpleRemote | 管理和启动 RDP/SSH/Telnet/VNC 等远程连接 |
 | `4.【禁用更新】` | Windows Update Blocker | 临时禁用 Windows 更新，降低远程桌面配置被系统更新破坏的概率 |
-| `5.【备用注册表】` | termsrv 服务相关注册表备份 | 需要回滚或修复远程桌面服务注册表时参考 |
+| `5.【备用注册表】` | termsrv 服务相关注册表备份（原版与 SuperRDP 接管两种状态） | 需要回滚或修复远程桌面服务注册表时参考 |
 
 ## 推荐使用顺序
 
@@ -73,6 +73,21 @@ https://raw.githubusercontent.com/sebaxakerhtc/rdpwrap.ini/master/rdpwrap.ini
 
 - `2.【限制解除】RDP限制破解/ini文件更新.txt`
 - `2.【限制解除】RDP限制破解/3.【需手动下载替换更新配置】SuperRDP2/ini文件更新.txt`
+
+## 工具版本核对（2026-11-27）
+
+| 工具 | 本地版本 | 上游最新 | 状态 |
+| --- | --- | --- | --- |
+| 1Remote | `1.3.1.11020` | release `1.3.1`（2026-10-16） | 本地为发布后的构建，无需更新 |
+| rdpWrapper | `2.16.9787.37221` | release `2.16`（2026-10-18） | 已是最新 |
+| RDP Wrapper Library mod | `1.8.9.9` | release `v1.8.9.9`（2023-07-19） | 已是最新，项目久未发版，配置另行更新 |
+| RDPWrapOffsetFinder | `v1.0` | release `v1.0`（2026-05-26） | 已是最新，master 另有未发版修复 |
+| SuperRDP2 | `2.1.0.1` | release `v2.1.0.1`（2023-02-28） | 已是最新，2.2 尚未发布 |
+| superrdp.ini | `Updated=2026-11-16` | 上游同日 | 已是最新 |
+| SimpleRemote | `1.3.1.0` | release `1.2`（2019-06-07） | 上游已停止维护，本地版本高于公开 release |
+| Windows Update Blocker | `1.8.0.0` | v1.8（2023-06-09） | 已是最新，校验值与官网一致 |
+
+核对结论：本仓库现有可执行文件均无需更新。真正会失效的是 RDP 相关配置，Windows 更新后请优先按上面的说明更新 `rdpwrap.ini` / `superrdp.ini`。
 
 ## 安全提醒
 
